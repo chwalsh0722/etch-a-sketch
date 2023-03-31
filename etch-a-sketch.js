@@ -37,6 +37,11 @@ function createNewBoard()
 {
   let newBoxesPerSide = prompt("Please enter number of boxes per side on new board.");
   
+  // Check that user's input is <= 100.
+  while (newBoxesPerSide > 100) {
+    newBoxesPerSide = prompt("Please enter a value of 100 or fewer boxes.");
+  }
+
   // Remove current boxes and rows from board.
   boxes = document.querySelectorAll('.box');
   boxes.forEach(box => box.remove());
@@ -46,7 +51,7 @@ function createNewBoard()
   // Create new board.
   createBoard(newBoxesPerSide);
   boxes = document.querySelectorAll('.box');
-  boxes.forEach(box => box.addEventListener('mouseeneter', mouseInBox));
+  boxes.forEach(box => box.addEventListener('mouseover', mouseInBox));
 }
 
 // Global variable for keeping track of number of boxes in grid.
